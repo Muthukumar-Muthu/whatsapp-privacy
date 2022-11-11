@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Whatsapp Privacy",
+  "version": "1.0.0",
+  "action": {
+    "default_title": "Whatsapp Privacy",
+    "default_popup": "popup.html"
+  },
+  "description": "Extension for Whatsapp with privacy feature",
+
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/"],
+      "js": ["content-script.js"]
+    }
+  ]
+}

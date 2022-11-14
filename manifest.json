@@ -7,11 +7,11 @@
     "default_popup": "popup.html"
   },
   "description": "Extension for Whatsapp with privacy feature",
-
   "content_scripts": [
     {
       "matches": ["https://web.whatsapp.com/"],
       "js": ["content-script.js"]
     }
-  ]
+  ],
+  "permissions": ["storage"]
 }

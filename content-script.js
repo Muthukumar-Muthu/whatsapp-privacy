@@ -13,12 +13,13 @@
   document.head.appendChild(style);
 })();
 
+/*
 const identifers = {
   messages: ".message-out > * , .message-in > *",
   chats: "div.lhggkp7q.ln8gz9je.rx9719la",
 };
 
-/*
+
  const app = document.querySelector("#app");
  let isChatLoaded = false;
  const config = { attributes: false, childList: true, subtree: true };

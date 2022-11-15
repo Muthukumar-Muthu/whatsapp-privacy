@@ -1,18 +1,5 @@
 //By default the content scripts run at After Dom load done. checkout https://developer.chrome.com/docs/extensions/mv3/content_scripts/#capabilities
 
-//attaching style tag to head
-// const CLASS_NAME = "blur-wp"
-(() => {
-  const style = document.createElement("style");
-  style.textContent = `.${CLASS_NAME}{
-         filter: blur(4px);
-       }
-       .${CLASS_NAME}:hover{
-         filter: blur(0px);
-       }`;
-  document.head.appendChild(style);
-})();
-
 /*
 const identifers = {
   messages: ".message-out > * , .message-in > *",
@@ -104,6 +91,7 @@ function diffInBlurList(previous = [], present = []) {
 
 //after loading the data (after the loader finished)
 
+//attaching style tag to head
 const style = document.createElement("style");
 style.textContent = `.${CLASS_NAME}{
          filter: blur(4px);

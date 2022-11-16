@@ -15,7 +15,22 @@ const optionsList = [
     identifier: "div.lhggkp7q.ln8gz9je.rx9719la",
     type: "chats",
   },
+  {
+    identifier: "img._8hzr9.M0JmA.i0jNr",
+    type: "Profile Picture",
+  },
+  {
+    identifier:
+      "span.ggj6brxn.gfz4du6o.r7fjleex.g0rxnol2.lhj4utae.le5p0ye3.l7jjieqr.i0jNr",
+    type: "Name",
+  },
 ];
+
+/*
+  profile picture
+  your picture
+  name
+*/
 const initalBlurList = storage.get(BLUR_LIST) || [];
 const initalBlurListMap = initalBlurList.reduce((p, c) => {
   p[c.type] = true;

@@ -117,6 +117,15 @@ function blurListEvent(blurListFromEvent = []) {
     })
     .catch(console.error);
 }
+
+function isChildHasThisParent(parent, child) {
+  let currentParent = child.parentElement;
+  while (currentParent) {
+    if (currentParent === parent) return true;
+    currentParent = currentParent.parentElement;
+  }
+  return false;
+}
 //after loading the data (after the loader finished)
 
 //attaching style tag to head
@@ -129,14 +138,30 @@ style.textContent = `.${CLASS_NAME}{
        }`;
 document.head.appendChild(style);
 
-extensionStorage
-  .get(BLUR_LIST, [])
-  .then((list) => {
-    console.log(list);
-    console.log("calling blur(list)");
-    blur(list);
-  })
-  .catch(console.error);
+const app = document.querySelector("#app");
+const config = { attributes: false, childList: true, subtree: true };
+
+function callback(mutationList) {
+  extensionStorage
+    .get(BLUR_LIST, [])
+    .then((list) => {
+      const identifiers = list.map((value) => value.identifier);
+      for (let mutation of mutationList) {
+        const { target } = mutation;
+        identifiers.forEach((identifier) => {
+          document.querySelectorAll(identifier).forEach((node) => {
+            if (isChildHasThisParent(target, node)) {
+              node.classList.add(CLASS_NAME);
+            }
+          });
+        });
+      }
+    })
+    .catch(console.error);
+}
+
+const mutationObserver = new MutationObserver(callback);
+mutationObserver.observe(app, config);
 
 //if popup.js sends any event
 
